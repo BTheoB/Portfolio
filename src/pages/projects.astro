@@ -1,0 +1,11 @@
+---
+import ProjectScroll from '@components/react/ProjectScroll.tsx';
+import ProjectLayout from '@layouts/ProjectLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<ProjectLayout title="Mon Portfolio - Accueil" description="Développeur full stack, découvrez mes projets">
+  <ProjectScroll client:visible projects={projects} />
+</ProjectLayout>
