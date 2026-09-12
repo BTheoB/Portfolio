@@ -1,17 +1,18 @@
 ---
-title: "Site e-commerce"
+title: "Projet 1 "
 description: "Hadjime, Mon premier jeu vidéo entièrement développer solo et from scratch 
 Jeu d'action prg zdknsfb fbn azfqsfl zùflk bnzùflbzn fùiz."
-screens: 
+media: 
   - "imagesTest/i1.jpg"
-  - "imagesTest/i2.png"
-  - "imagesTest/i2.png"
-  - "imagesTest/i2.png"
-videos:
   - "videoTest/v1.mp4"
-technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"]
-liveUrl: "https://mon-ecommerce.vercel.app"
-featured: true
+  - "imagesTest/i2.png"
+  - "imagesTest/i2.png"
+  - "imagesTest/i2.png"
+displayStructure:
+  - 2
+  - 3
+technologies: ["Unity.js", "C#"]
+githubUrl: "https://github.com/BTheoB/HajimeBrokenArt"
 date: 2025-03-15
 ---
 

@@ -10,14 +10,21 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    screens: z.array(z.string()).default([]),
-    videos: z.array(z.string()).default([]),
+    media: z.array(z.string()).default([]),
+    displayStructure: z.array(z.int().min(1).max(3)),
     technologies: z.array(z.string()),
     githubUrl: z.string().url().optional(),
-    liveUrl: z.string().url().optional(),
-    featured: z.boolean().default(false),
     date: z.coerce.date(),
-  }),
+  }).refine(
+    (data) => {
+      const totalStructure = data.displayStructure.reduce((sum, n) => sum + n, 0);
+      return data.media.length === totalStructure;
+    },
+    {
+      message: "La somme de displayStructure doit être égale au nombre total de médias (screens + videos)",
+      path: ["displayStructure"],
+    }
+  ),
 });
 
 export const collections = {

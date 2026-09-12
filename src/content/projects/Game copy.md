@@ -1,14 +1,14 @@
 ---
 title: "Site e-commerce"
 description: "Plateforme de vente en ligne avec panier et paiement Stripe."
-screens: 
+media: 
   - "imagesTest/i3.png"
   - "imagesTest/i2.png"
-videos:
   - "videoTest/v2.mp4"
+displayStructure:
+  - 1
+  - 2
 technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"]
-liveUrl: "https://mon-ecommerce.vercel.app"
-featured: true
 date: 2025-03-15
 ---
 
