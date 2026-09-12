@@ -10,24 +10,29 @@ interface Project {
   data: {
     title: string;
     description: string;
-    screens: string[];
-    videos?: string[];
+    media: string[];
+    displayStructure: number[];
   };
 }
-
 interface Props {
   projects: Project[];
 }
 
-type Media = { type: "image" | "video"; src: string };
+function getColSpan(rowLength: number): string {
+  if (rowLength === 1) return "col-span-6";
+  if (rowLength === 2) return "col-span-3";
+  if (rowLength === 3) return "col-span-2";
+  return "col-span-6";
+}
 
-// Découpe un tableau en groupes de `size` éléments
-function chunkArray<T>(arr: T[], size: number): T[][] {
-  const chunks: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) {
-    chunks.push(arr.slice(i, i + size));
+function chunkMediaByStructure(media: string[], displayStructure: number[]): string[][] {
+  const rows: string[][] = [];
+  let index = 0;
+  for (const size of displayStructure) {
+    rows.push(media.slice(index, index + size));
+    index += size;
   }
-  return chunks;
+  return rows;
 }
 
 export default function ProjectsScroll({ projects }: Props) {
@@ -35,16 +40,15 @@ export default function ProjectsScroll({ projects }: Props) {
 
   useGSAP(() => {
     const mediaItems = gsap.utils.toArray<HTMLElement>(".project-media");
-
     mediaItems.forEach((item) => {
       gsap.fromTo(
         item,
-        { opacity: 0, y: 60 },
+        { opacity: 0, y: 200 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: "power2.out",
+          duration: 0.5,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: item,
             start: "top 80%",
@@ -59,14 +63,7 @@ export default function ProjectsScroll({ projects }: Props) {
   return (
     <div ref={container} className="projects-scroll">
       {projects.map((project) => {
-        // Fusionne screens + videos en une seule liste typée
-        const media: Media[] = [
-          ...(project.data.videos ?? []).map((src) => ({ type: "video" as const, src })),
-          ...project.data.screens.map((src) => ({ type: "image" as const, src })),
-        ];
-
-        // Découpe en lignes de 2
-        const rows = chunkArray(media, 2);
+        const rows = chunkMediaByStructure(project.data.media, project.data.displayStructure);
 
         return (
           <section key={project.id} className="project-block lg:flex flex-row-reverse">
@@ -74,15 +71,16 @@ export default function ProjectsScroll({ projects }: Props) {
               <h2>{project.data.title}</h2>
               <p>{project.data.description}</p>
             </div>
-            <div className="media-stack flex flex-col gap-2 lg:w-8/10">
+            <div className="media-stack flex flex-col gap-4 lg:w-8/10">
               {rows.map((row, rowIndex) => (
-                <div key={rowIndex} className="flex flex-wrap gap-4">
-                  {row.map((item, i) =>
-                    item.type === "video" ? (
+                <div key={rowIndex} className="grid grid-cols-6 gap-4">
+                  {row.map((media, mediaIdx) => (
+                    <div key={mediaIdx} className={`project-media overflow-hidden aspect-video rounded-xl ${getColSpan(row.length)}`}>
+                      {media.search("mp4") !== -1 ? (
                       <video
-                        key={i}
-                        className="project-media w-full sm:w-1/2 h-auto rounded-xl"
-                        src={item.src}
+                        key={mediaIdx}
+                        className="w-full h-auto rounded-xl"
+                        src={media}
                         autoPlay
                         muted
                         loop
@@ -90,14 +88,15 @@ export default function ProjectsScroll({ projects }: Props) {
                       />
                     ) : (
                       <img
-                        key={i}
-                        className="project-media w-full sm:w-1/3 h-auto rounded-md"
-                        src={item.src}
+                        key={mediaIdx}
+                        className="w-full h-auto rounded-md"
+                        src={media}
                         alt=""
                         loading="lazy"
                       />
-                    )
-                  )}
+                    )}
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

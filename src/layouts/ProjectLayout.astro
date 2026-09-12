@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title,
-  description = "Portfolio de [Ton Nom] — Développeur Full Stack"
+  description = "Portfolio Théo Bastienne-Banco — Développeur Full Stack",
 } = Astro.props;
 ---
 
@@ -32,6 +32,9 @@ const {
   </head>
 
   <body>
+    <h1 class="text-4xl font-bold mb-4">Théo Bastienne-Banco</h1>
+    <h2 class="text-2xl font-semibold mb-4">Développeur Full Stack</h2>
+    <h3 class="text-lg mb-8">Portfolio</h3>
     <slot />
   </body>
 </html>
