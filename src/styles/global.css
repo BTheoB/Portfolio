@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-text-primary: #111827;
+  --color-accent: #7c3aed;
+}
+
+.dark {
+  --color-bg-primary: oklch(14.5% 0 none);
+  --color-bg-secondary: #18181b;
+  --color-text-primary: oklch(97.7% 0.014 308.299); /*couleur de test ? fait mal au yeux maybe #e9d5ff*/
+  --color-accent: #7c3aed;
+}
+
