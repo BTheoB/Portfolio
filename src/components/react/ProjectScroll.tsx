@@ -51,7 +51,7 @@ export default function ProjectsScroll({ projects }: Props) {
           ease: "power4.out",
           scrollTrigger: {
             trigger: item,
-            start: "top 80%",
+            start: "top 90%",
             end: "top 30%",
             toggleActions: "play none none reverse",
           },
@@ -61,15 +61,15 @@ export default function ProjectsScroll({ projects }: Props) {
   }, { scope: container });
 
   return (
-    <div ref={container} className="projects-scroll">
-      {projects.map((project) => {
+    <div ref={container} className="m-5">
+      {projects.map((project, index) => {
         const rows = chunkMediaByStructure(project.data.media, project.data.displayStructure);
 
         return (
-          <section key={project.id} className="project-block lg:flex flex-row-reverse">
+          <section key={project.id} className="project-block lg:flex flex-row-reverse mb-7 gap-7">
             <div className="project-text sm:w-2/10">
-              <h2>{project.data.title}</h2>
-              <p>{project.data.description}</p>
+              <h2 className="text-text-primary text-center text-2xl font-bold mb-2">{project.data.title}</h2>
+              <p className="text-text-primary text-justify">{project.data.description}</p>
             </div>
             <div className="media-stack flex flex-col gap-4 lg:w-8/10">
               {rows.map((row, rowIndex) => (
