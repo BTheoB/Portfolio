@@ -25,3 +25,8 @@ import '@styles/global.css'
 		height: 100%;
 	}
 </style>
+<script is:inline>
+  const theme = localStorage.getItem("theme") ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.classList.toggle("dark", theme === "dark");
+</script>
