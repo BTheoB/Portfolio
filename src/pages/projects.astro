@@ -1,11 +1,96 @@
 ---
-import ProjectScroll from '@components/react/ProjectScroll.tsx';
-import ProjectLayout from '@layouts/ProjectLayout.astro';
-import { getCollection } from 'astro:content';
+import ProjectScroll from "@components/react/ProjectScroll.tsx";
+import ScrambleText from "@components/react/ScrambleText.tsx";
+import GlowCursor from "@components/react/GlowCursor.tsx";
+import ProjectLayout from "@layouts/ProjectLayout.astro";
+import ThemeToggle from "@components/react/ThemeToggle.tsx";
+import ProjectHead from "@components/astro/ProjectHead.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
 
-const projects = await getCollection('projects');
+const projects = await getCollection("projects");
 ---
 
-<ProjectLayout title="Mon Portfolio - Accueil" description="Développeur full stack, découvrez mes projets">
-  <ProjectScroll client:visible projects={projects} />
+<ProjectLayout
+  title="Mon Portfolio - Accueil"
+  description="Développeur full stack, découvrez mes projets"
+>
+  <GlowCursor client:load />
+  <ProjectHead title="Projets" description="Découvrez mes projets" />
+
+  <ThemeToggle client:load />
+
+  <div class="flex items-center justify-between w-full mb-4">
+    <h1 class="text-text-primary text-4xl font-bold">
+      <ScrambleText
+        client:visible
+        text="Théo Bastienne-Banco"
+        offset={0.5}
+        duration={2}
+      />
+    </h1>
+    <h2>
+      <a
+        class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+        href="https://www.linkedin.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon
+          name="simple-icons:linkedin"
+          class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+        />
+        <ScrambleText
+          client:visible
+          text="LinkedIn"
+          offset={0.5}
+          duration={2}
+        />
+      </a>
+    </h2>
+  </div>
+  <div class="flex items-center justify-between w-full mb-4">
+    <h2 class="text-text-primary text-2xl font-semibold">
+      <ScrambleText
+        client:visible
+        text="Développeur Full Stack"
+        offset={1}
+        duration={2}
+      />
+    </h2>
+    <h2>
+      <a
+        class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+        href="https://github.com/BTheoB"
+        target="_blank"
+      >
+        <Icon
+          name="simple-icons:github"
+          class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+        />
+        <ScrambleText client:visible text="GitHub" offset={1} duration={2} />
+      </a>
+    </h2>
+  </div>
+
+  <div class="flex items-center justify-between w-full mb-8">
+    <h3 class="text-text-primary text-lg">
+      <ScrambleText client:visible text="Portfolio" offset={1.5} duration={2} />
+    </h3>
+    <h2>
+      <a
+        class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+        href="mailto:tbastienne@gmail.com"
+      >
+        <Icon
+          name="simple-icons:gmail"
+          class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+        />
+        <ScrambleText client:visible text="Email" offset={1.5} duration={2} />
+      </a>
+    </h2>
+  </div>
+  <div>
+    <ProjectScroll client:visible projects={projects} />
+  </div>
 </ProjectLayout>
