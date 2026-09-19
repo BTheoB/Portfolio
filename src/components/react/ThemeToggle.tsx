@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import BorderStyle from "./BorderStyle";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -15,8 +16,16 @@ export default function ThemeToggle() {
   };
 
   return (
-      <button onClick={toggleTheme} aria-label="Changer de thème">
-        {isDark ? "☀️" : "🌙"}
-      </button>
+    <div className="flex items-center gap-2">
+      <BorderStyle>
+        <button
+          onClick={toggleTheme}
+          aria-label="Changer de thème"
+          className=" text-text-primary text-corps-size"
+        >
+          {isDark ? "Mode Clair" : "Mode Sombre "}
+        </button>
+      </BorderStyle>
+    </div>
   );
 }
