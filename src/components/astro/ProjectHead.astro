@@ -1,13 +1,20 @@
-<div
-  class="relative flex min-h-72 items-center justify-center rounded-b-3xl px-8 pb-8 pt-16"
->
+<div class="relative flex min-h-72 items-center justify-center rounded-b-3xl px-8 pb-8 pt-16">
   <div
     class="pointer-events-none absolute top-0 left-0 h-96 w-full bg-[radial-gradient(ellipse_at_top,rgba(168,119,247,0.45),transparent_70%)]"
     aria-hidden="true"
-  >
-  </div>
+  ></div>
 
-  <nav class="relative z-10" aria-label="Liens de contact">
-    <p class="text-text-primary">MA TËTE EN 3D QUI TOURNE ICI :D</p>
-  </nav>
+  <section class="relative z-10" aria-label="Modèle 3D">
+    <model-viewer
+      src="/3d/buste3d.glb"
+      alt="Modèle 3D de ma tête"
+      camera-controls
+      auto-rotate
+      class="h-64 w-64"
+    ></model-viewer>
+  </section>
 </div>
+
+<script>
+  import "@google/model-viewer";
+</script>
