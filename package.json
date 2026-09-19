@@ -26,7 +26,8 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "yet-another-react-lightbox": "^3.32.2"
   },
   "allowScripts": {
     "esbuild": true
