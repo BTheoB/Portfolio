@@ -1,5 +1,5 @@
 ---
-title: "Site e-commerce"
+title: "PROJET NUMERO DEUX"
 description: "Plateforme de vente en ligne avec panier et paiement Stripe."
 media: 
   - "imagesTest/i3.png"

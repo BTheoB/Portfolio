@@ -1,5 +1,5 @@
 ---
-title: "Projet 1 "
+title: "PROJET 1 "
 description: "Hadjime, Mon premier jeu vidéo entièrement développer solo et from scratch 
 Jeu d'action prg zdknsfb fbn azfqsfl zùflk bnzùflbzn fùiz."
 media: 
