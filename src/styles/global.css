@@ -1,18 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f3f4f6;
-  --color-text-primary: #111827;
+  --color-bg-primary: #fafafa;
+  --color-bg-secondary: #f0edf7;
+  --color-text-primary: #1e1b29;
   --color-accent: #7c3aed;
+  --cursor-glow: radial-gradient(circle, rgba(124, 58, 237, 0.50), transparent 70%);
+  --text-title-size: clamp(1.5rem, 4vw + 1rem, 1.875rem);
+  --text-title-size--line-height: calc(2.25 / 1.875);
+  --text-subtitle-size: clamp(1.25rem, 2vw + 0.75rem, 1.5rem);
+  --text-subtitle-size--line-height: calc(2 / 1.5);
+  --text-corps-size: clamp(0.875rem, 1vw + 0.75rem, 1rem);
+  --text-corps-size--line-height: calc(1.5 / 1);
+  --font-league-spartan: "League Spartan", "sans-serif";
 }
 
 .dark {
   --color-bg-primary: oklch(14.5% 0 none);
   --color-bg-secondary: #18181b;
-  --color-text-primary: oklch(97.7% 0.014 308.299); /*couleur de test ? fait mal au yeux maybe #e9d5ff*/
-  --color-accent: #7c3aed;
+  --color-text-primary: #e9d5ff;
+  --color-accent: #a78bfa;
+  --cursor-glow: radial-gradient(circle, rgba(194, 122, 255, 0.60), transparent 70%);
 }
 
