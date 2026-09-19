@@ -18,10 +18,10 @@ const projects = await getCollection("projects");
   <GlowCursor client:load />
   <ProjectHead title="Projets" description="Découvrez mes projets" />
 
-  <ThemeToggle client:load />
+  <div class="flex justify-center mb-20"><ThemeToggle client:load /></div>
   <div class="m-5">
     <div class="flex items-center justify-between w-full mb-4">
-      <h1 class="text-text-primary text-title-size font-bold">
+      <h1 class="text-text-primary text-title-size font-semibold">
         <ScrambleText
           client:visible
           text="Théo Bastienne-Banco"
@@ -83,9 +83,9 @@ const projects = await getCollection("projects");
     </div>
 
     <div
-      class="flex items-center justify-between w-full mb-20 sm:mb-40 md:mb-52"
+      class="flex items-center justify-between w-full mb-20 md:mb-30"
     >
-      <h3 class="text-text-primary text-subtitle-size">
+      <h3 class="text-text-primary text-subtitle-size font-semibold">
         <a
           href="public/CV_Theo_Bastienne-Banco.pdf"
           download="CV_Theo_Bastienne-Banco.pdf"
@@ -124,7 +124,7 @@ const projects = await getCollection("projects");
     <ProjectScroll client:visible projects={projects} />
   </div>
   <div class="m-5">
-    <div class="flex items-center justify-between w-full mb-4">
+    <div class="flex items-center justify-between w-full mb-2 mt-10">
       <h3 class="text-text-primary text-corps-size font-bold">
         Théo Bastienne-Banco
       </h3>
@@ -143,7 +143,7 @@ const projects = await getCollection("projects");
         </a>
       </h2>
     </div>
-    <div class="flex items-center justify-between w-full mb-4">
+    <div class="flex items-center justify-between w-full mb-2">
       <h2 class="text-text-primary text-corps-size font-semibold">
         Développeur Full Stack
       </h2>
@@ -161,9 +161,8 @@ const projects = await getCollection("projects");
         </a>
       </h2>
     </div>
-
     <div class="flex items-center justify-between w-full">
-      <h1 class="text-text-primary text-title-size">
+      <h1 class="text-text-primary text-corps-size font-bold">
         <a
           href="public/CV_Theo_Bastienne-Banco.pdf"
           download="CV_Theo_Bastienne-Banco.pdf"
