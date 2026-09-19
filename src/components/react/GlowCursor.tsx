@@ -28,7 +28,7 @@ export default function GlowCursor() {
       style={{
         /*rgba(194, 122, 255, 0.35) correspond au purple-400 de tailwinds*/
         background:
-          "radial-gradient(circle, rgba(194, 122, 255, 0.35), transparent 70%)",
+          "var(--cursor-glow)",
         filter: "blur(80px)",
       }}
     />
