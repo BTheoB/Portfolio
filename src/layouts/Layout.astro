@@ -26,7 +26,6 @@ import '@styles/global.css'
 	}
 </style>
 <script is:inline>
-  const theme = localStorage.getItem("theme") ??
-    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const theme = localStorage.getItem("theme") ?? "dark";
   document.documentElement.classList.toggle("dark", theme === "dark");
 </script>
