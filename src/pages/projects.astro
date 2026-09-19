@@ -19,89 +19,171 @@ const projects = await getCollection("projects");
   <ProjectHead title="Projets" description="Découvrez mes projets" />
 
   <ThemeToggle client:load />
-
-  <div class="flex items-center justify-between w-full mb-4">
-    <h1 class="text-text-primary text-4xl font-bold">
-      <ScrambleText
-        client:visible
-        text="Théo Bastienne-Banco"
-        offset={0.5}
-        duration={2}
-      />
-    </h1>
-    <h2>
-      <a
-        class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
-        href="www.linkedin.com/in/théo-bastienne-banco-0ba518163"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon
-          name="simple-icons:linkedin"
-          class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
-        />
+  <div class="m-5">
+    <div class="flex items-center justify-between w-full mb-4">
+      <h1 class="text-text-primary text-title-size font-bold">
         <ScrambleText
           client:visible
-          text="LinkedIn"
+          text="Théo Bastienne-Banco"
           offset={0.5}
           duration={2}
         />
-      </a>
-    </h2>
-  </div>
-  <div class="flex items-center justify-between w-full mb-4">
-    <h2 class="text-text-primary text-2xl font-semibold">
-      <ScrambleText
-        client:visible
-        text="Développeur Full Stack"
-        offset={1}
-        duration={2}
-      />
-    </h2>
-    <h2>
-      <a
-        class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
-        href="https://github.com/BTheoB"
-        target="_blank"
-      >
-        <Icon
-          name="simple-icons:github"
-          class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
-        />
-        <ScrambleText client:visible text="GitHub" offset={1} duration={2} />
-      </a>
-    </h2>
-  </div>
-
-  <div class="flex items-center justify-between w-full mb-8">
-    <h3 class="text-text-primary text-lg">
-      <a
-        href="public/CV_Theo_Bastienne-Banco.pdf"
-        download="CV_Theo_Bastienne-Banco.pdf"
-        class="no-underline text-text-primary hover:text-accent transition-colors"
-      >
+      </h1>
+      <h2>
+        <a
+          class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+          href="https://www.linkedin.com/in/théo-bastienne-banco-0ba518163"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon
+            name="simple-icons:linkedin"
+            class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+          />
+          <div class="hidden md:inline">
+            <ScrambleText
+              client:visible
+              text="LinkedIn"
+              offset={0.5}
+              duration={2}
+            />
+          </div>
+        </a>
+      </h2>
+    </div>
+    <div class="flex items-center justify-between w-full mb-4">
+      <h2 class="text-text-primary text-subtitle-size font-semibold">
         <ScrambleText
           client:visible
-          text="Curriculum vitae"
+          text="Développeur Full Stack"
           offset={1}
           duration={2}
         />
-      </a>
-    </h3>
-    <h2>
-      <a
-        class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
-        href="mailto:tbastienne@gmail.com"
-      >
-        <Icon
-          name="simple-icons:gmail"
-          class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
-        />
-        <ScrambleText client:visible text="Email" offset={1.5} duration={2} />
-      </a>
-    </h2>
+      </h2>
+      <h2>
+        <a
+          class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+          href="https://github.com/BTheoB"
+          target="_blank"
+        >
+          <Icon
+            name="simple-icons:github"
+            class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+          />
+          <div class="hidden md:inline">
+            <ScrambleText
+              client:visible
+              text="GitHub"
+              offset={1}
+              duration={2}
+            />
+          </div>
+        </a>
+      </h2>
+    </div>
+
+    <div
+      class="flex items-center justify-between w-full mb-20 sm:mb-40 md:mb-52"
+    >
+      <h3 class="text-text-primary text-subtitle-size">
+        <a
+          href="public/CV_Theo_Bastienne-Banco.pdf"
+          download="CV_Theo_Bastienne-Banco.pdf"
+          class="no-underline text-text-primary hover:text-accent transition-colors"
+        >
+          <ScrambleText
+            client:visible
+            text="Curriculum vitae"
+            offset={1}
+            duration={2}
+          />
+        </a>
+      </h3>
+      <h2>
+        <a
+          class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+          href="mailto:tbastienne@gmail.com"
+        >
+          <Icon
+            name="simple-icons:gmail"
+            class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+          />
+          <div class="hidden md:inline">
+            <ScrambleText
+              client:visible
+              text="Email"
+              offset={1.5}
+              duration={2}
+            />
+          </div>
+        </a>
+      </h2>
+    </div>
   </div>
   <div>
     <ProjectScroll client:visible projects={projects} />
+  </div>
+  <div class="m-5">
+    <div class="flex items-center justify-between w-full mb-4">
+      <h3 class="text-text-primary text-corps-size font-bold">
+        Théo Bastienne-Banco
+      </h3>
+      <h2>
+        <a
+          class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+          href="https://www.linkedin.com/in/théo-bastienne-banco-0ba518163"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon
+            name="simple-icons:linkedin"
+            class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+          />
+          <div class="hidden md:inline">LinkedIn</div>
+        </a>
+      </h2>
+    </div>
+    <div class="flex items-center justify-between w-full mb-4">
+      <h2 class="text-text-primary text-corps-size font-semibold">
+        Développeur Full Stack
+      </h2>
+      <h2>
+        <a
+          class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+          href="https://github.com/BTheoB"
+          target="_blank"
+        >
+          <Icon
+            name="simple-icons:github"
+            class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+          />
+          <div class="hidden md:inline">GitHub</div>
+        </a>
+      </h2>
+    </div>
+
+    <div class="flex items-center justify-between w-full">
+      <h1 class="text-text-primary text-title-size">
+        <a
+          href="public/CV_Theo_Bastienne-Banco.pdf"
+          download="CV_Theo_Bastienne-Banco.pdf"
+          class="no-underline text-text-primary hover:text-accent transition-colors"
+        >
+          Curriculum vitae
+        </a>
+      </h1>
+      <h2>
+        <a
+          class="flex gap-2 items-center font-semibold text-text-primary no-underline transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+          href="mailto:tbastienne@gmail.com"
+        >
+          <Icon
+            name="simple-icons:gmail"
+            class="h-6 w-6 text-text-primary hover:text-accent transition-colors"
+          />
+          <div class="hidden md:inline">Email</div>
+        </a>
+      </h2>
+    </div>
   </div>
 </ProjectLayout>
