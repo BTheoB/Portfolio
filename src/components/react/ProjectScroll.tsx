@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ProjectLightbox from "./ProjectLightbox";
+import BorderStyle from "./BorderStyle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,6 +42,15 @@ function chunkMediaByStructure(
 
 export default function ProjectsScroll({ projects }: Props) {
   const container = useRef<HTMLDivElement>(null);
+  const [activeMediaList, setActiveMediaList] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openLightbox = (mediaList: string[], index: number) => {
+    setActiveMediaList(mediaList);
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
 
   useGSAP(
     () => {
@@ -68,7 +79,7 @@ export default function ProjectsScroll({ projects }: Props) {
 
   return (
     <div ref={container} className="m-5">
-      {projects.map((project, index) => {
+      {projects.map((project) => {
         const rows = chunkMediaByStructure(
           project.data.media,
           project.data.displayStructure,
@@ -80,28 +91,11 @@ export default function ProjectsScroll({ projects }: Props) {
             className="project-block lg:flex flex-row-reverse mb-7 gap-7"
           >
             <div className="project-text sm:w-2/10">
-              <div className="relative w-fit mx-auto px-6 py-1 mb-2">
-                <span
-                  className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-accent"
-                  aria-hidden="true"
-                />
-                <span
-                  className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-accent"
-                  aria-hidden="true"
-                />
-                <span
-                  className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-accent"
-                  aria-hidden="true"
-                />
-                <span
-                  className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-accent"
-                  aria-hidden="true"
-                />
-
+              <BorderStyle>
                 <h2 className="text-text-primary text-center text-title-size font-bold italic">
                   {project.data.title}
                 </h2>
-              </div>
+              </BorderStyle>
               <p className="text-text-primary text-corps-size text-justify">
                 {project.data.description}
               </p>
@@ -109,38 +103,51 @@ export default function ProjectsScroll({ projects }: Props) {
             <div className="media-stack flex flex-col gap-4 lg:w-8/10">
               {rows.map((row, rowIndex) => (
                 <div key={rowIndex} className="grid grid-cols-6 gap-4">
-                  {row.map((media, mediaIdx) => (
-                    <div
-                      key={mediaIdx}
-                      className={`project-media overflow-hidden aspect-video rounded-xl ${getColSpan(row.length)}`}
-                    >
-                      {media.search("mp4") !== -1 ? (
-                        <video
-                          key={mediaIdx}
-                          className="w-full h-auto rounded-xl"
-                          src={media}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                        />
-                      ) : (
-                        <img
-                          key={mediaIdx}
-                          className="w-full h-auto rounded-md"
-                          src={media}
-                          alt=""
-                          loading="lazy"
-                        />
-                      )}
-                    </div>
-                  ))}
+                  {row.map((media, mediaIdx) => {
+                    const globalIndex = project.data.media.indexOf(media);
+
+                    return (
+                      <button
+                        key={mediaIdx}
+                        type="button"
+                        onClick={() =>
+                          openLightbox(project.data.media, globalIndex)
+                        }
+                        className={`project-media overflow-hidden aspect-video rounded-xl cursor-pointer ${getColSpan(row.length)}`}
+                      >
+                        {media.includes(".mp4") ? (
+                          <video
+                            className="w-full h-auto rounded-xl"
+                            src={media}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        ) : (
+                          <img
+                            className="w-full h-auto rounded-md"
+                            src={media}
+                            alt=""
+                            loading="lazy"
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               ))}
             </div>
           </section>
         );
       })}
+
+      <ProjectLightbox
+        mediaList={activeMediaList}
+        currentIndex={currentIndex}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </div>
   );
 }
