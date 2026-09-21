@@ -14,7 +14,34 @@ const projects = defineCollection({
     displayStructure: z.array(z.int().min(1).max(3)),
     technologies: z.array(z.string()),
     githubUrl: z.string().url().optional(),
-    date: z.coerce.date(),
+    readme: z.string().optional(),
+    date: z.coerce.date().optional(),
+  }).refine(
+    (data) => {
+      const totalStructure = data.displayStructure.reduce((sum, n) => sum + n, 0);
+      return data.media.length === totalStructure;
+    },
+    {
+      message: "La somme de displayStructure doit être égale au nombre total de médias (screens + videos)",
+      path: ["displayStructure"],
+    }
+  ),
+});
+
+const projectsMockUp = defineCollection({
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/content/projectsMockUp',
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    media: z.array(z.string()).default([]),
+    displayStructure: z.array(z.int().min(1).max(3)),
+    technologies: z.array(z.string()),
+    githubUrl: z.string().url().optional(),
+    readme: z.string().optional(),
+    date: z.coerce.date().optional(),
   }).refine(
     (data) => {
       const totalStructure = data.displayStructure.reduce((sum, n) => sum + n, 0);
@@ -28,5 +55,5 @@ const projects = defineCollection({
 });
 
 export const collections = {
-  projects,
+  projects, projectsMockUp
 };

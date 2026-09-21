@@ -14,6 +14,8 @@ interface Project {
     description: string;
     media: string[];
     displayStructure: number[];
+    technologies: string[];
+    githubUrl?: string;
   };
 }
 interface Props {
@@ -88,19 +90,32 @@ export default function ProjectsScroll({ projects }: Props) {
         return (
           <section
             key={project.id}
-            className="project-block lg:flex flex-row-reverse mb-7 gap-7"
+            className="lg:flex flex-row-reverse mb-7 gap-7"
           >
-            <div className="project-text sm:w-2/10">
+            <div className="flex flex-col items-center lg:w-2/10 mb-10">
               <BorderStyle>
                 <h2 className="text-text-primary text-center text-title-size font-bold italic">
                   {project.data.title}
                 </h2>
               </BorderStyle>
-              <p className="text-text-primary text-corps-size text-justify">
+              <p className="text-text-primary text-corps-size mb-5">
+                {project.data.technologies.join(" | ")}
+              </p>
+              <p className="text-text-primary text-sm text-justify">
                 {project.data.description}
               </p>
+              {project.data.githubUrl && (
+                <a
+                  className="text-accent mt-5 underline decoration-accent decoration-2 underline-offset-4 transition duration-200 ease-in-out hover:-translate-y-0.5 hover:text-[#e9d5ff] focus-visible:-translate-y-0.5 focus-visible:text-[#e9d5ff]"
+                  href={project.data.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Information détaillé sur GitHub
+                </a>
+              )}
             </div>
-            <div className="media-stack flex flex-col gap-4 lg:w-8/10">
+            <div className="flex flex-col gap-4 lg:w-8/10">
               {rows.map((row, rowIndex) => (
                 <div key={rowIndex} className="grid grid-cols-6 gap-4">
                   {row.map((media, mediaIdx) => {
