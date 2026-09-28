@@ -128,11 +128,11 @@ export default function ProjectsScroll({ projects }: Props) {
                         onClick={() =>
                           openLightbox(project.data.media, globalIndex)
                         }
-                        className={`project-media overflow-hidden aspect-video rounded-xl cursor-pointer ${getColSpan(row.length)}`}
+                        className={`project-media overflow-hidden rounded-xl cursor-pointer ${getColSpan(row.length)}`}
                       >
                         {media.includes(".mp4") ? (
                           <video
-                            className="w-full h-auto rounded-xl"
+                            className="w-full h-auto object-contain rounded-md"
                             src={media}
                             autoPlay
                             muted
@@ -141,7 +141,7 @@ export default function ProjectsScroll({ projects }: Props) {
                           />
                         ) : (
                           <img
-                            className="w-full h-auto rounded-md"
+                            className="w-full h-auto object-contain rounded-md"
                             src={media}
                             alt=""
                             loading="lazy"
