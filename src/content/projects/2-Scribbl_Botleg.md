@@ -4,7 +4,7 @@ description: "Projet réalisé dans le cadre du Master 2 — matière Web Temps 
 Une réinterprétation du célèbre jeu skribbl.io, développée en TypeScript, où l'on ne dessine plus seulement à la souris, mais aussi avec ses doigts, en direct via la caméra, grâce à la détection de mains par IA.
 "
 media: 
-  - "data/medias/Scribbl_Botleg/video/Scribbl_Botleg_video_compressed.mp4"
+  - "/data/medias/Scribbl_Botleg/video/Scribbl_Botleg_video_compressed.mp4"
 displayStructure:
   - 1
 technologies: ["React", "Typescript", "WebRTC","Node.js"]

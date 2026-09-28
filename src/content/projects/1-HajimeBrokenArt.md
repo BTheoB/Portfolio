@@ -7,10 +7,10 @@ description: "Jeu vidéo développé intégralement en solo, conçu comme un ter
     - Structurer une architecture de code maintenable et évolutive
 "
 media: 
-  - "data/medias/HajimeBrokenArt/screen/AnimationScreen.jpg"
-  - "data/medias/HajimeBrokenArt/screen/BossScreen.jpg"
-  - "data/medias/HajimeBrokenArt/video/Game_trailer_compressed.mp4"
-  - "data/medias/HajimeBrokenArt/screen/NavMeshScreen.jpg"
+  - "/data/medias/HajimeBrokenArt/screen/AnimationScreen.jpg"
+  - "/data/medias/HajimeBrokenArt/screen/BossScreen.jpg"
+  - "/data/medias/HajimeBrokenArt/video/Game_trailer_compressed.mp4"
+  - "/data/medias/HajimeBrokenArt/screen/NavMeshScreen.jpg"
 displayStructure:
   - 2
   - 2
