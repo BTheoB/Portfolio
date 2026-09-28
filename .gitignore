@@ -8,7 +8,8 @@ dist/
 node_modules/
 
 # medias
-public/data/
+public/data/medias/*/raw_video/
+public/data/medias/*/original_video/
 
 # Media Structure
 src/content/projects/
