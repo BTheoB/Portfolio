@@ -13,9 +13,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  redirects: {
-    "/": "/projects"
-  },
   site: "https://theobastienne.com",
   integrations: [react(), icon(), sitemap()],
 
