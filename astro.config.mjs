@@ -9,13 +9,15 @@ import icon from "astro-icon";
 
 import cloudflare from "@astrojs/cloudflare";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   redirects: {
     "/": "/projects"
   },
-
-  integrations: [react(), icon()],
+  site: "https://theobastienne.com",
+  integrations: [react(), icon(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
